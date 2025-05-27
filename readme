@@ -1,0 +1,23 @@
+first.yml
+-name: first ansible demo
+ hosts: localhost
+ tasks:
+      - name: print hello
+       debug:
+          msg: "Hello Ansible"
+
+second.yml
+
+name: install and run Apache
+ hosts: localhost
+ become: yes
+ tasks:
+    - name: Install Apache
+      apt:
+     name: apache2
+     state: present
+   - name: Start Apache service
+     service:
+        name: apache2
+        state: started
+        enables: yes
